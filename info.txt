@@ -28,10 +28,23 @@ e.g.
 
 good practice to use height & width; shoul correspond to image proportions
 
+________________________________________________________________________________________
 
+file system routing in Next.js => each folder represents a route segment that maps to a URL segment
+should contain :
+- page.tsx - a special Next.js file that exports a React component, and it's required for the route to be accessible 
+    => /app/page.tsx - home page associated with the route /
+- layout.tsx - file to create UI that is shared between multiple pages
+    has a prop {children} which are the components to be inserted in a the layout, e.g.
 
-
-
+    export default function Layout({ children }: { children: React.ReactNode }) {
+    return (
+        <div className="flex h-screen flex-col">
+            <SideNav />
+            {children}   // here are inserted all pages inside this route
+        </div>
+    );
+}
 
 
 
