@@ -80,3 +80,31 @@ now possible to use the clsx lib to conditionally apply class names (=> also imp
             },
         )}
     >
+________________________________________________________________________________________
+
+connecting a DB:
+in the tuto, we deploy the project on vercel;
+we add storage => postgres => set in Washington (for better latency)
+then we create a storage && copy local .env data => insert in .env in our project (must be in gitignore)
+=>
+run npm i @vercel/postgres to install the Vercel Postgres SDK
+
+=> created a db
+
+in /scripts/seed.ls there are info on a db creation => insrt this line 
+    "seed": "node -r dotenv/config ./scripts/seed.js"
+inside package.json
+=> run npm run seed
+
+
+
+
+
+
+
+
+
+
+
+
+
