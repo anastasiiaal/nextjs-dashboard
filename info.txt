@@ -1,0 +1,40 @@
+to import fonts
+
+=> in app/ui => fonts.ts
+    import { Inter } from 'next/font/google';
+    import { Lusitana } from 'next/font/google';
+    
+    export const inter = Inter({ subsets: ['latin'] });
+    export const lusitana  = Lusitana ({ weight: ['400', '700'], subsets: ['latin'] });
+
+then, to use in component:
+    import { inter } from '@/app/ui/fonts';
+
+    <body className={`${inter.className}`}>{children}</body>
+
+________________________________________________________________________________________
+
+mages opti
+
+<Image> component is an extension of the <img> tag; comes with automatic image optimization
+e.g.
+    <Image
+        src="/hero-desktop.png"
+        width={1000}
+        height={760}
+        className="hidden md:block"
+        alt="Screenshots of the dashboard project showing desktop version"
+    />
+
+good practice to use height & width; shoul correspond to image proportions
+
+
+
+
+
+
+
+
+
+
+
