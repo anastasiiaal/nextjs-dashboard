@@ -164,6 +164,39 @@ ________________________________________________________________________________
 cp 9 https://nextjs.org/learn/dashboard-app/streaming
 
 streaming
+streaming is a data transfer technique that allows you to break down a route into smaller "chunks" (components) and progressively stream them from the server to the client as they become ready
+
+streaming cn be done either via loading.tsx file, or through <Suspense> component
+
+1. loading.tsx
+special Next.js file built on top of Suspense, it allows you to create fallback UI to show as a replacement while page content loads
+static elements, such as menus, sidebars, are loaded immediately, the rest that's async is temporarily replaced by contents of loading.tsx
+
+can also add "loading skeletons" => a simplified version of UI
+
+    import DashboardSkeleton from '@/app/ui/skeletons';
+
+    export default function Loading() {
+        return <DashboardSkeleton />;
+    }
+
+(those are coded by hand)
+
+now the loading file is on the same level as folders /invoices/ & /customers/, so it will apply to them as well; this can be changed with route groups. to do so, inside /dashboard/ we create a new folder /(overview)/ [sic] and put the loader && the page.tsx routes inside
+the route created (in parenthesis) will not appear in url
+
+2. suspense 
+Suspense allows you to defer rendering parts of your application until some condition is met (e.g. data is loaded). You can wrap your dynamic components in Suspense. Then, pass it a fallback component to show while the dynamic component loads.
+
+
+
+
+
+
+
+
+
+
 
 
 
