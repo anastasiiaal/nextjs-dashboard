@@ -124,6 +124,48 @@ ________________________________________________________________________________
 
 when our page is an async function => it is to let it await some fetched data
 
+normally, data is fetched in "request waterfall" (one fetch starts when another ends) if we do like this :
+    const revenue = await fetchRevenue();
+    const latestInvoices = await fetchLatestInvoices();  // wait for fetchRevenue() to finish
+
+if we want it to be simultaneous (when no need to get one info before getting another), we can use Promise.all()
+e.g.
+    const data = await Promise.all([
+        invoiceCountPromise,
+        customerCountPromise,
+        invoiceStatusPromise,
+    ])
+
+________________________________________________________________________________________
+
+statis vs. dynamic rendering
+
+Static Rendering:
+data fetching and rendering happens on the server at build time (when you deploy) or during revalidation
+
+Dynamic Rendering:
+content is rendered on the server for each user at request time (when the user visits the page); pros:
+- Real-Time Data; ideal for applications where data changes often
+- User-Specific Content
+- Request Time Information - allows you to access information that can only be known at request time
+
+to make a page dynamic :
+
+    import { unstable_noStore as noStore } from 'next/cache';
+
+add noStore(); func in the beginning of all async functions, e.g.
+    export async function fetchLatestInvoices() {
+        noStore();
+        // reste du code ...
+    }
+
+________________________________________________________________________________________
+
+cp 9 https://nextjs.org/learn/dashboard-app/streaming
+
+streaming
+
+
 
 
 
