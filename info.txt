@@ -190,11 +190,19 @@ Suspense allows you to defer rendering parts of your application until some cond
 ___
 
 grouping components
+___
 
+In general, it's good practice to move your data fetches down to the components that need it, and then wrap those components in Suspense. But there is nothing wrong with streaming the sections or the whole page if that's what your application needs.
 
+________________________________________________________________________________________
 
+search & pagination
+pt 11 https://nextjs.org/learn/dashboard-app/adding-search-and-pagination
 
-
+Next.js client hooks that you'll use to implement the search functionality:
+- useSearchParams- Allows you to access the parameters of the current URL. For example, the search params for this URL /dashboard/invoices?page=1&query=pending would look like this: {page: '1', query: 'pending'}.
+- usePathname - Lets you read the current URL's pathname. For example, for the route /dashboard/invoices, usePathname would return '/dashboard/invoices'.
+- useRouter - Enables navigation between routes within client components programmatically. There are multiple methods you can use.
 
 
 
