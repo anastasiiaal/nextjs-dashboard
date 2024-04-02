@@ -212,12 +212,30 @@ You might have noticed you used two different ways to extract search params. Whe
 <Search> is a Client Component, so you used the useSearchParams() hook to access the params from the client.
 <Table> is a Server Component that fetches its own data, so you can pass the searchParams prop from the page to the component.
 As a general rule, if you want to read the params from the client, use the useSearchParams() hook as this avoids having to go back to the server.
+___
 
+to avoid query sending on each key stroke as we type our query, we can set a timer that would start the query only if sertain time passed since the last letter type
+this is called "debouncing"
+this can be either done manually or by importing a library, e.g. npm i use-debounce
+then, can be imported and used :
+    import { useDebouncedCallback } from 'use-debounce';
 
+    const handleSearch = useDebouncedCallback((term) => {
+        console.log(`Searching... ${term}`);
+        
+        const params = new URLSearchParams(searchParams);
+        if (term) {
+            params.set('query', term);
+        } else {
+            params.delete('query');
+        }
+        replace(`${pathname}?${params.toString()}`);
+    }, 300);
 
+By debouncing, you can reduce the number of requests sent to your database, thus saving resources.
+________________________________________________________________________________________
 
-
-
+pagination
 
 
 
