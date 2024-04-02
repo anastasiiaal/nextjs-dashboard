@@ -187,8 +187,9 @@ the route created (in parenthesis) will not appear in url
 
 2. suspense 
 Suspense allows you to defer rendering parts of your application until some condition is met (e.g. data is loaded). You can wrap your dynamic components in Suspense. Then, pass it a fallback component to show while the dynamic component loads.
+___
 
-
+grouping components
 
 
 
